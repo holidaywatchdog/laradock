@@ -7,7 +7,7 @@ if [ ! -f /etc/nginx/ssl/default.crt ]; then
 fi
 
 if [ ! -f /etc/nginx/ssl/hwd.crt ]; then
-    openssl req -x509 -out hwd.crt -keyout hwd.key \
+    openssl req -x509 -out /etc/nginx/ssl/hwd.crt -keyout /etc/nginx/ssl/hwd.key \
       -newkey rsa:2048 -nodes -sha256 \
       -subj '/CN=www.holidaywatchdog.test' -extensions EXT -config <( \
        printf "[dn]\nCN=www.holidaywatchdog.test\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:www.holidaywatchdog.test\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
